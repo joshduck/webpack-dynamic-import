@@ -1,0 +1,4 @@
+{
+  "presets": ["es2016", "flow"],
+  "plugins": ["syntax-dynamic-import"]
+}
