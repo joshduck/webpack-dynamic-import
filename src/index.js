@@ -1,5 +1,12 @@
 // @flow
+import {inspect} from 'import-inspector';
+
+const stopInspecting = inspect(metadata => {
+  console.log('Imported', metadata);
+});
+
 import('./dynamic').then(({ default: dynamic }) => {
-  console.log('resolved');
-  console.log(dynamic());
-})
+  dynamic();
+});
+
+setTimeout(stopInspecting);
