@@ -1,27 +1,33 @@
 // @flow
 import { inspect } from "import-inspector";
 import path from "path";
+import process from "process";
+import ManifestInspector from "../tools/manifest-inspector";
 
-const stopInspecting = inspect(metadata => {
-  console.log("Imported", metadata.serverSideRequirePath);
+const manifest = new ManifestInspector("build/manifest.json");
+
+// Hard require on component
+import a from "./components/a";
+a();
+
+// Look up bundle for a module without importing it
+const bundle = manifest.getBundleForWebpackId(
+  require.resolveWeak("./components/b")
+);
+console.log(`Weak resolve for ./components/b, provided by ${bundle}`);
+
+// Look up bundles for dynamic imports
+inspect(data => {
+  const bundle = manifest.getBundleForWebpackId(data.webpackRequireWeakId());
+  console.log(
+    `Dynamic require for ${data.importedModulePath}, provided by ${bundle}.`
+  );
 });
 
-import("./a").then(({ default: a }) => {
-  a();
-});
-
-import("./b").then(({ default: b }) => {
+import("./components/b").then(({ default: b }) => {
   b();
 });
 
-import("./path/d").then(({ default: b }) => {
-  b();
+import("./components/c").then(({ default: c }) => {
+  c();
 });
-
-import c from "./c";
-c();
-
-import d from "./path/d";
-d();
-
-setTimeout(stopInspecting);

@@ -1,4 +1,4 @@
-const ManifestPlugin = require("./webpack/manifest-plugin");
+const ManifestPlugin = require("./tools/webpack-manifest-plugin");
 
 module.exports = {
   entry: "./src/index.js",

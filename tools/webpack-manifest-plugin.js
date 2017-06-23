@@ -11,13 +11,16 @@ ManifestPlugin.prototype.apply = function(compiler) {
     compilation.chunks.forEach(chunk => {
       if (chunk.modules && chunk.files.length) {
         const file = chunk.files[0];
+
         manifest[file] = chunk.modules
           .filter(module => module.libIdent)
           .map(module => ({
             name: module.libIdent({
               context: this.opts.context || compiler.options.context
             }),
-            index: module.index
+            index: module.index,
+            index2: module.index2,
+            webpackId: module.id // Corresponds to require.resolveWeak / webpackRequireWeakId
           }));
       }
     });
