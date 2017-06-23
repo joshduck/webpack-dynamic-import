@@ -14,13 +14,13 @@ a();
 const bundle = manifest.getBundleForWebpackId(
   require.resolveWeak("./components/b")
 );
-console.log(`Weak resolve for ./components/b, provided by ${bundle}`);
+console.log(`Did weak resolve for ./components/b, provided by ${bundle}`);
 
 // Look up bundles for dynamic imports
 inspect(data => {
   const bundle = manifest.getBundleForWebpackId(data.webpackRequireWeakId());
   console.log(
-    `Dynamic require for ${data.importedModulePath}, provided by ${bundle}.`
+    `Did dynamic require for ${data.importedModulePath}, provided by ${bundle}.`
   );
 });
 
