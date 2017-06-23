@@ -1,10 +1,18 @@
-# node-js-boilerplate
+# Webpack Dynamic Import Manifest
 
-A super-simple Node starter project with Jest, Flow, Babel, and Webpack.
+Generate a manifest of module bundles at build time, and then determine exactly
+which bundles were used.
 
-That's it!
+## Why is this important?
 
-* `npm run start` Compile src/index.js to build/bundle.js and run it.
-* `npm run watch` Start watching src/index.js and compile it on change.
-* `npm run test` Run Jest tests.
-* `npm run flow` Run Flow checks.
+Dynamic imports allow us to split our application up into smaller chunks so that
+we spend less time loading and preparing JavaScript in the browser. But because
+bundles are loaded only when used, we may end up waiting for critical
+functionality to appear when the page is loaded.
+
+This approach means it will be possible to create an isomorphic application
+that, after server rendering, will know exactly which component bundles will
+be required by the client on initial render. We can then preload those bundles
+or even push them via HTTP2.
+
+![Build and run](/docs/screenshot.png?raw=true)
