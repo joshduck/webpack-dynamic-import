@@ -15,6 +15,7 @@ export default class ManifestInspector {
   }
 
   getBundleForWebpackId(webpackId) {
-    return this.map[webpackId].bundle;
+    const info = this.map[webpackId];
+    return info && info.bundle;
   }
 }

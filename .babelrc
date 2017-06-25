@@ -1,5 +1,5 @@
 {
-  "presets": ["es2016", "flow", "react"],
+  "presets": ["es2016", "es2015", "flow", "react"],
   "plugins": [
     "syntax-dynamic-import",
     ["babel-plugin-import-inspector", {

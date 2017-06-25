@@ -1,15 +1,15 @@
-const ManifestPlugin = require("./tools/webpack-manifest-plugin");
+const ManifestPlugin = require("./webpack-manifest-plugin");
 
 module.exports = {
-  entry: "./src/server.js",
-  target: "node",
+  entry: "./src/client.js",
+  target: "web",
   output: {
-    path: __dirname + "/build/server",
+    path: __dirname + "/../build/client",
     filename: "index.js"
   },
   plugins: [
     new ManifestPlugin({
-      path: "./build/manifest.json"
+      path: "./build/client.manifest.json"
     })
   ],
   module: {
