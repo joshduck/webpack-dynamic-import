@@ -3,6 +3,7 @@
   "plugins": [
     "syntax-dynamic-import",
     ["babel-plugin-import-inspector", {
+      "currentModuleFileName": false,
       "serverSideRequirePath": true,
       "webpackRequireWeakId": true
     }]

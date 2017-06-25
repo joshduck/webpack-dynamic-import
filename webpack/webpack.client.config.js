@@ -5,7 +5,8 @@ module.exports = {
   target: "web",
   output: {
     path: __dirname + "/../build/client",
-    filename: "index.js"
+    filename: "index.js",
+    publicPath: "assets/"
   },
   plugins: [
     new ManifestPlugin({

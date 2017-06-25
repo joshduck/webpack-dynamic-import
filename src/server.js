@@ -5,20 +5,28 @@ import express from "express";
 import ManifestInspector from "../webpack/manifest-inspector";
 import App from "./app";
 
-const manifest = new ManifestInspector("build/server.manifest.json");
-
-// Look up bundles for dynamic imports
-inspect(data => {
-  const bundle = manifest.getBundleForWebpackId(data.webpackRequireWeakId());
-  console.log(
-    `Did dynamic require for ${data.importedModulePath}, provided by ${bundle}.`
-  );
-});
+const manifest = new ManifestInspector(
+  "build/client.manifest.json",
+  "build/server.manifest.json"
+);
 
 const app = express();
 
+app.use("/assets", express.static("build/client"));
+
 app.get("/", function(req, res) {
+  const bundles = [];
+
+  const stopInspect = inspect(data => {
+    const bundle = manifest.getBundle(data.webpackRequireWeakId());
+    console.log(`Import ${data.importedModulePath} is provided by ${bundle}.`);
+    bundle && bundles.push(bundle);
+  });
+
   const app = renderToString(<App />);
+
+  console.log(bundles);
+  stopInspect();
 
   res.send(`
     <!DOCTYPE html>
@@ -26,10 +34,16 @@ app.get("/", function(req, res) {
       <head>
         <meta charset="utf-8">
         <title>Isomorphic Dynamic Imports</title>
-        <script src="https://unpkg.com/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        ${bundles
+          .map(
+            bundle =>
+              `<link rel="preload" href="/assets/${bundle}" as="script" />`
+          )
+          .join("")}
       </head>
       <body>
         <div id="root">${app}</div>
+        <script src="/assets/index.js"></script>
       </body>
     </html>
   `);
