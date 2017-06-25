@@ -1,7 +1,10 @@
 {
-  "presets": ["es2016", "flow"],
-  "plugins": ["syntax-dynamic-import", ["babel-plugin-import-inspector", {
-    "serverSideRequirePath": true,
-    "webpackRequireWeakId": true
-  }]]
+  "presets": ["es2016", "flow", "react"],
+  "plugins": [
+    "syntax-dynamic-import",
+    ["babel-plugin-import-inspector", {
+      "serverSideRequirePath": true,
+      "webpackRequireWeakId": true
+    }]
+  ]
 }

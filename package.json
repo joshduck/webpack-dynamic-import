@@ -23,6 +23,10 @@
     "webpack": "^2.6.1"
   },
   "dependencies": {
-    "import-inspector": "^2.0.0"
+    "babel-preset-react": "^6.24.1",
+    "import-inspector": "^2.0.0",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-loadable": "^4.0.3"
   }
 }

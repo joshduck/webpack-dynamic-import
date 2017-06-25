@@ -1,3 +1,5 @@
-export default function() {
-  console.log("Render A");
-}
+import React from "react";
+
+export default () => {
+  return <div>Component A</div>;
+};
