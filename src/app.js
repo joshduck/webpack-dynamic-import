@@ -9,11 +9,14 @@ export default Loadable.Map({
   },
   loading: () => <div>Loading...</div>,
   render({ B, C }, props) {
+    B = B ? B.default || B : "div";
+    C = C ? C.default || C : "div";
+
     return (
       <div>
         <A />
-        <B.default />
-        <C.default />
+        <B />
+        <C />
       </div>
     );
   }

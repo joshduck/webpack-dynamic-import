@@ -17,6 +17,7 @@ app.use("/assets", express.static("build/client"));
 app.get("/", function(req, res) {
   const bundles = [];
 
+  // Note -- this only fires on first import, so only works for first page load
   const stopInspect = inspect(data => {
     const bundle = manifest.getBundle(data.webpackRequireWeakId());
     console.log(`Import ${data.importedModulePath} is provided by ${bundle}.`);
@@ -25,7 +26,6 @@ app.get("/", function(req, res) {
 
   const app = renderToString(<App />);
 
-  console.log(bundles);
   stopInspect();
 
   res.send(`
@@ -34,16 +34,13 @@ app.get("/", function(req, res) {
       <head>
         <meta charset="utf-8">
         <title>Isomorphic Dynamic Imports</title>
-        ${bundles
-          .map(
-            bundle =>
-              `<link rel="preload" href="/assets/${bundle}" as="script" />`
-          )
-          .join("")}
       </head>
       <body>
         <div id="root">${app}</div>
         <script src="/assets/index.js"></script>
+        ${bundles
+          .map(bundle => `<script src="/assets/${bundle}"></script>`)
+          .join("")}
       </body>
     </html>
   `);

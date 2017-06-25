@@ -20,7 +20,6 @@
     "babel-preset-react": "^6.24.1",
     "flow-bin": "^0.48.0",
     "import-inspector": "^2.0.0",
-    "jest": "^20.0.4",
     "webpack": "^2.6.1"
   },
   "dependencies": {
