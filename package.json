@@ -4,7 +4,7 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
-    "start": "webpack && node ./build/bundle",
+    "start": "webpack && node ./build/server",
     "watch": "webpack --watch",
     "test": "jest",
     "flow": "flow"
@@ -18,13 +18,14 @@
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "babel-preset-es2016": "^6.24.1",
     "babel-preset-flow": "^6.23.0",
+    "babel-preset-react": "^6.24.1",
     "flow-bin": "^0.48.0",
+    "import-inspector": "^2.0.0",
     "jest": "^20.0.4",
     "webpack": "^2.6.1"
   },
   "dependencies": {
-    "babel-preset-react": "^6.24.1",
-    "import-inspector": "^2.0.0",
+    "express": "^4.15.3",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-loadable": "^4.0.3"

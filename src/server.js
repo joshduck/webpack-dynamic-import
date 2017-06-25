@@ -2,6 +2,7 @@
 import { inspect } from "import-inspector";
 import React from "react";
 import { renderToString } from "react-dom/server";
+import express from "express";
 import ManifestInspector from "../tools/manifest-inspector";
 import App from "./app";
 
@@ -15,4 +16,12 @@ inspect(data => {
   );
 });
 
-console.log(renderToString(<App />));
+const app = express();
+
+app.get("/", function(req, res) {
+  res.send(renderToString(<App />));
+});
+
+app.listen(3000, function() {
+  console.log("Example app listening on http://localhost:3000/");
+});

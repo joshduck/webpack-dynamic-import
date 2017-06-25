@@ -1,11 +1,11 @@
 const ManifestPlugin = require("./tools/webpack-manifest-plugin");
 
 module.exports = {
-  entry: "./src/index.js",
+  entry: "./src/server.js",
   target: "node",
   output: {
-    path: __dirname + "/build",
-    filename: "bundle.js"
+    path: __dirname + "/build/server",
+    filename: "index.js"
   },
   plugins: [
     new ManifestPlugin({
