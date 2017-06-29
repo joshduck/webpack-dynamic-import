@@ -1817,6 +1817,10 @@ minimist@^1.2.0:
   dependencies:
     minimist "0.0.8"
 
+module-manifest-inspector@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/module-manifest-inspector/-/module-manifest-inspector-0.1.1.tgz#95b34d733df7790c5adba610ed5b84d64cccccb4"
+
 ms@2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.0.0.tgz#5608aeadfc00be6c2901df5f9861788de0d597c8"
@@ -2666,6 +2670,10 @@ watchpack@^1.3.1:
     async "^2.1.2"
     chokidar "^1.4.3"
     graceful-fs "^4.1.2"
+
+webpack-module-manifest-plugin@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/webpack-module-manifest-plugin/-/webpack-module-manifest-plugin-0.1.0.tgz#e50dcd91dc044e9f8b9d88180ce939aede9dc089"
 
 webpack-require-weak@^1.0.0:
   version "1.0.1"

@@ -3,7 +3,7 @@
 Generate a manifest of module bundles at build time, and then determine exactly
 which bundles were used to server render a page.
 
-** NOTE: This is very much a work in progress **
+** NOTE: This is still a work in progress **
 
 ## Why is this important?
 
@@ -27,13 +27,12 @@ or even push them via HTTP2.
 * [babel-plugin-syntax-dynamic-import](https://github.com/babel/babel/tree/master/packages/babel-plugin-syntax-dynamic-import)
   Allows Babel to compile dynamic imports.
 * [babel-plugin-import-inspector](https://github.com/thejameskyle/babel-plugin-import-inspector)
-  Informs us of dynamic imports.
-* [react-loadable](https://github.com/thejameskyle/react-loadable) Renders
-  dynamically loaded components, using import-inspector to synchronously load
-  dependencies for the server render.
-* ./webpack/webpack-manifest-plugin Emits a list of modules that are packaged
-  in server and client bundles.
-* ./webpack/manifest-inspector Looks at the two manifest files and determines
-  what client bundles will be needed based on the dynamic imports that happen on
-  the server. It uses the original filename to correlate the two; so will only
-  work for modules packaged in both client and server bundles.
+  Informs our code at runtime when a dynamic import occurs.
+* [react-loadable](https://github.com/thejameskyle/react-loadable)
+  Renders dynamically loaded components, using import-inspector to synchronously
+  load dependencies for the server render.
+* [webpack-module-manifest-plugin](https://github.com/joshduck/webpack-module-manifest-plugin)
+  Emits a list of modules that are packaged in server and client bundles.
+* [module-manifest-inspector](https://github.com/joshduck/module-manifest-inspector)
+  Looks at the client and server manifest files and determines what client
+  bundles will be needed based on the dynamic imports that happen on the server. 

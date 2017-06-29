@@ -1,4 +1,4 @@
-const ManifestPlugin = require("./webpack-manifest-plugin");
+const ManifestPlugin = require("webpack-module-manifest-plugin");
 
 module.exports = {
   entry: "./src/client.js",
@@ -10,7 +10,7 @@ module.exports = {
   },
   plugins: [
     new ManifestPlugin({
-      path: "./build/client.manifest.json"
+      filename: "./build/client.manifest.json"
     })
   ],
   module: {

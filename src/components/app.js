@@ -1,11 +1,11 @@
 import React from "react";
 import Loadable from "react-loadable";
-import A from "./components/a";
+import A from "./a";
 
 export default Loadable.Map({
   loader: {
-    B: () => import("./components/b"),
-    C: () => import("./components/c")
+    B: () => import("./b"),
+    C: () => import("./c")
   },
   loading: () => <div>Loading...</div>,
   render({ B, C }, props) {

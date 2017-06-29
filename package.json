@@ -5,8 +5,8 @@
   "main": "src/index.js",
   "scripts": {
     "start": "yarn run build:server && yarn run build:client && node ./build/server",
-    "build:server": "webpack --config ./webpack/webpack.server.config.js",
-    "build:client": "webpack --config ./webpack/webpack.client.config.js"
+    "build:server": "webpack --config ./webpack.server.config.js",
+    "build:client": "webpack --config ./webpack.client.config.js"
   },
   "author": "",
   "license": "MIT",
@@ -15,15 +15,17 @@
     "babel-loader": "^7.0.0",
     "babel-plugin-import-inspector": "^2.0.0",
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
+    "babel-preset-es2015": "^6.24.1",
     "babel-preset-es2016": "^6.24.1",
     "babel-preset-flow": "^6.23.0",
     "babel-preset-react": "^6.24.1",
     "flow-bin": "^0.48.0",
     "import-inspector": "^2.0.0",
-    "webpack": "^2.6.1"
+    "module-manifest-inspector": "^0.1.1",
+    "webpack": "^2.6.1",
+    "webpack-module-manifest-plugin": "^0.1.0"
   },
   "dependencies": {
-    "babel-preset-es2015": "^6.24.1",
     "express": "^4.15.3",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
